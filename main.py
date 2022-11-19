@@ -20,8 +20,8 @@ class Shipment:
         if 6 < last > 9:
             raise RuntimeError('Invalid number')
 
-        q = " ".join(qotes[last].text.replace('\n', '').replace('Aliexpress Standard Shipping', '').replace('Hong Kong', ''))
-        q = q.split()
+        q = " ".join(qotes[last].text.replace('\n', '').replace('Aliexpress Standard Shipping', '').replace('Hong Kong', '').split())
+
         for x in self.Month:
             q = q.replace(x, self.Month[x])
         q = q.replace(' ', ':', 1)
