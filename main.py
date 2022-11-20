@@ -57,8 +57,3 @@ class Shipment:
             'status': self.GetSippingState(last, qote)[self.pattern.StatusStart:len(self.GetSippingState(1, qote))]
         }
         return ReturnDict
-
-
-Sh = Shipment('LD145472776CN', 'china-ems')
-Sh.SetMonthDict()
-print(Sh.GetTrack(0)['date'])
