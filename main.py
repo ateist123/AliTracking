@@ -38,6 +38,6 @@ def MakeInterface():
     c = 1
     for x in TracksDict:
         c += 1
-        TrackCodes.append(Text(tk, text=x).grid(column=c, row=c//2))
+        c = Text(tk, TracksDict[x])
 
 MakeInterface()
