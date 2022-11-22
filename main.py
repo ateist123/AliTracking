@@ -35,7 +35,6 @@ class MakeInterface:
         screen = [str(int(self.tk.winfo_screenwidth() / 2)), str(int(tk.winfo_screenheight() / 2))]
         tk.geometry(screen[0] + 'x' + screen[1])
         tk.title('Aliexpress Shipments Tracking by ' + Creator)
-
     def ConstructText(self, TracksDict: dict):
         TrackCodes = []
         c = 2
