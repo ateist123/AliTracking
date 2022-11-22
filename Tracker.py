@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 
 class Shipment:
-    def __init__(self, track, sender):
+    def __init__(self, track: str, sender: str):
         self.Track = track
         self.Sender = sender
         self.Month = []
@@ -50,7 +50,7 @@ class Shipment:
             'декабря': '12'
         }
 
-    def GetTrack(self, last=1, IsRaw=False):
+    def GetTrack(self, last: int = 1, IsRaw=False):
         url = 'https://gdeposylka.ru/courier/' + self.Sender + '/tracking/' + self.Track
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'lxml')

@@ -1,7 +1,7 @@
-from Tracker import Shipment
 from tkinter import *
-import config
 
+import config
+from Tracker import Shipment
 
 StdEncoding = config.StdEncoding
 SendersList = config.SendersList
@@ -27,17 +27,22 @@ def DoTrackList(SendersL, TracksL):
     return TracksDict
 
 
-def MakeInterface():
-    tk = Tk()
-    screen = [str(int(tk.winfo_screenwidth()/2)), str(int(tk.winfo_screenheight()/2))]
-    tk.geometry(screen[0]+'x'+screen[1])
-    tk.title('Aliexpress Shipments Tracking')
+class MakeInterface:
+    def __init__(self, tk: Tk(), Creator: str):
+        # TracksDict = DoTrackList(SendersList, TracksList)
+        self.TracksDict = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        self.tk = Tk()
+        screen = [str(int(self.tk.winfo_screenwidth() / 2)), str(int(tk.winfo_screenheight() / 2))]
+        tk.geometry(screen[0] + 'x' + screen[1])
+        tk.title('Aliexpress Shipments Tracking by ' + Creator)
 
-    TracksDict = DoTrackList(SendersList, TracksList)
-    TrackCodes = []
-    c = 1
-    for x in TracksDict:
-        c += 1
-        c = Text(tk, TracksDict[x])
+    def ConstructText(self, TracksDict: dict):
+        TrackCodes = []
+        c = 2
+        for x in TracksDict:
+            c += 1
+            TrackCodes.append(Label(self.tk, text=x).grid(column=c % 3, row=c // 3))
+        self.tk.mainloop()
+
 
 MakeInterface()
