@@ -27,21 +27,26 @@ def DoTrackList(SendersL, TracksL):
     return TracksDict
 
 
-class MakeInterface:
-    def __init__(self, tk: Tk(), Creator: str):
-        # TracksDict = DoTrackList(SendersList, TracksList)
-        self.TracksDict = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-        self.tk = Tk()
-        screen = [str(int(self.tk.winfo_screenwidth() / 2)), str(int(tk.winfo_screenheight() / 2))]
-        tk.geometry(screen[0] + 'x' + screen[1])
-        tk.title('Aliexpress Shipments Tracking by ' + Creator)
-    def ConstructText(self, TracksDict: dict):
+class Interface:
+    tk = Tk()
+
+    def __init__(self, Creator: str, TracksDict: dict = None):
+        if not TracksDict:
+            self.TracksDict = DoTrackList(SendersList, TracksList)
+        else:
+            self.TracksDict = TracksDict
+        screen = [str(int(self.tk.winfo_screenwidth() / 2)), str(int(self.tk.winfo_screenheight() / 2))]
+        self.tk.geometry(screen[0] + 'x' + screen[1])
+        self.tk.title('Aliexpress Shipments Tracking by ' + Creator)
+
+    def ConstructText(self, TracksDict):
         TrackCodes = []
-        c = 2
+        c = 0
         for x in TracksDict:
             c += 1
-            TrackCodes.append(Label(self.tk, text=x).grid(column=c % 3, row=c // 3))
+            TrackCodes.append(Label(self.tk, text=x).grid(column=1, row=c))
         self.tk.mainloop()
 
 
-MakeInterface()
+i = Interface('/dev/null')
+i.ConstructText([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
