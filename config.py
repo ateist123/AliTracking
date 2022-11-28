@@ -6,3 +6,6 @@ TracksList = [
     base64.standard_b64decode('Uk00MTQ0MDUxODJISw==').decode(StdEncoding),
     base64.standard_b64decode('WkVTQkYyMDAwNDYzMjkwWVE=').decode(StdEncoding)
 ]
+TracksDict = {
+
+}
